@@ -1,4 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:brasil_media/widgets/home.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Splashscreen extends StatefulWidget {
   @override
@@ -6,10 +9,19 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
-  bool play = false;
+  bool play = true;
+  @override
+  void initState() {
+    super.initState();
+    anime();
+  }
 
   anime() {
-    Future.delayed(Duration(milliseconds: 400)).whenComplete(() => play = true);
+    Future.delayed(Duration(milliseconds: 400))
+        .whenComplete(() => setState(() => play = false));
+    Future.delayed(Duration(seconds: 4)).whenComplete(() =>
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => Home())));
   }
 
   @override
@@ -26,18 +38,34 @@ class _SplashscreenState extends State<Splashscreen> {
           height: height,
           width: width,
         ),
-        Container(
-          height: 300,
-          alignment: Alignment.center,
-          child: AnimatedOpacity(
-            curve: Curves.decelerate,
-            duration: Duration(milliseconds: 1000),
-            opacity: play ? 1 : 0,
-            child: ClipOval(
-                child: Image.asset(
-              'assets/brasilparalelo.png',
-            )),
-          ),
+        Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 80),
+              height: 300,
+              alignment: Alignment.center,
+              child: AnimatedOpacity(
+                curve: Curves.decelerate,
+                duration: Duration(milliseconds: 1000),
+                opacity: play ? 0 : 1,
+                child: ClipOval(
+                    child: Image.asset(
+                  'assets/brasilparalelo.png',
+                )),
+              ),
+            ),
+            SizedBox(height: 20),
+            DefaultTextStyle(
+              style: GoogleFonts.armata(
+                  decoration: TextDecoration.none,
+                  color: Colors.white,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold),
+              child: AnimatedTextKit(
+                  isRepeatingAnimation: false,
+                  animatedTexts: [TyperAnimatedText('Brasil Paralelo')]),
+            )
+          ],
         ),
       ]),
     );

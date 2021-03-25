@@ -11,7 +11,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Midia Brasil',
-      theme: ThemeData(),
+      theme: ThemeData(
+        primaryColor: Colors.black,
+      ),
       home: Splashscreen(),
     );
   }
