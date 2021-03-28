@@ -1,7 +1,7 @@
 import 'package:brasil_media/helper/config.dart';
+import 'package:brasil_media/widgets/emotion_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DocWidget extends StatefulWidget {
   const DocWidget({
@@ -15,6 +15,7 @@ class DocWidget extends StatefulWidget {
 class _DocWidgetState extends State<DocWidget> {
   bool like = false;
   bool love = false;
+  bool surprise = false;
   int numberLikes;
   @override
   Widget build(BuildContext context) {
@@ -66,82 +67,7 @@ class _DocWidgetState extends State<DocWidget> {
                   ])),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                margin: EdgeInsets.all(6),
-                padding: EdgeInsets.all(4),
-                width: 200,
-                decoration: BoxDecoration(
-                    color: Colors.blue[300],
-                    boxShadow: [
-                      BoxShadow(color: Colors.black54, offset: Offset(2, 3))
-                    ],
-                    borderRadius: BorderRadius.circular(10)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onLongPress: () {},
-                      child: Tooltip(
-                        height: 50,
-                        preferBelow: false,
-                        decoration: BoxDecoration(
-                            color: Colors.blue[300],
-                            borderRadius: BorderRadius.circular(10)),
-                        message: 'likes $numberLikes',
-                        child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 2),
-                          child: Icon(like
-                              ? CupertinoIcons.hand_thumbsup_fill
-                              : CupertinoIcons.hand_thumbsup),
-                        ),
-                      ),
-                      onTap: () {
-                        setState(() => like = !like);
-                      },
-                    ),
-                    GestureDetector(
-                      child: Tooltip(
-                        height: 50,
-                        preferBelow: false,
-                        decoration: BoxDecoration(
-                            color: Colors.blue[300],
-                            borderRadius: BorderRadius.circular(10)),
-                        message: 'Amei $numberLikes',
-                        child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 2),
-                          child: Icon(love
-                              ? CupertinoIcons.heart_solid
-                              : CupertinoIcons.heart),
-                        ),
-                      ),
-                      onTap: () {
-                        setState(() => love = !love);
-                      },
-                    ),
-                    GestureDetector(
-                      child: Tooltip(
-                        height: 50,
-                        preferBelow: false,
-                        decoration: BoxDecoration(
-                            color: Colors.blue[300],
-                            borderRadius: BorderRadius.circular(10)),
-                        message: 'Amei $numberLikes',
-                        child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 2),
-                            child: FaIcon(FontAwesomeIcons.surprise)),
-                      ),
-                      onTap: () {
-                        setState(() => love = !love);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          )
+          EmotionBar()
         ],
       ),
     );
