@@ -13,9 +13,9 @@ class User extends ChangeNotifier {
       this.profileImage,
       this.email,
       this.password,
-      this.premium,
-      this.patriota});
-  User.fromjson(Map<dynamic, dynamic> json)
+      this.premium = false,
+      this.patriota = false});
+  User.fromJson(Map<dynamic, dynamic> json)
       : name = json['name'],
         profileImage = json['profileImage'],
         email = json['email'],

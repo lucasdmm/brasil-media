@@ -1,5 +1,5 @@
 import 'package:brasil_media/controller/doc_controller.dart';
-import 'package:brasil_media/pages/doc_page.dart';
+import 'package:brasil_media/controller/user_controller.dart';
 import 'package:brasil_media/widgets/br_p_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +15,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final docs = Provider.of<DocController>(context);
+    docs.generateMockList(context);
+    final users = Provider.of<UserController>(context);
+    users.generateMockList(context);
+    var list = docs.list
+        .where((doc) =>
+            doc.patriota == users.userSinged.patriota &&
+            doc.premium == users.userSinged.premium)
+        .toList();
 
     return Scaffold(
       body: NestedScrollView(
@@ -25,21 +33,17 @@ class _HomeState extends State<Home> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(top: 18.0),
-                  child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => DocPage(
-                                      doc: docs.list[index],
-                                    ))).then((value) => setState(() {}));
-                      },
-                      child: DocWidget(doc: docs.list[index])),
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 18.0),
+                      child: DocWidget(id: list[index].id),
+                    ),
+                  ],
                 );
               },
-              childCount: docs.list.length,
+              childCount: list.length,
             ),
           ),
         ]),
