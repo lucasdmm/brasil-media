@@ -1,9 +1,10 @@
-import 'package:brasil_media/model/documentary.dart';
+import 'package:brasil_media/controller/doc_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HeroImageWidget extends StatefulWidget {
-  final Documentary doc;
-  HeroImageWidget({@required this.doc});
+  final int id;
+  HeroImageWidget({@required this.id});
   @override
   _HeroImageWidgetState createState() => _HeroImageWidgetState();
 }
@@ -11,9 +12,12 @@ class HeroImageWidget extends StatefulWidget {
 class _HeroImageWidgetState extends State<HeroImageWidget> {
   @override
   Widget build(BuildContext context) {
+    final doc = Provider.of<DocController>(context)
+        .list
+        .firstWhere((doc) => doc.id == widget.id);
     return Hero(
       transitionOnUserGestures: true,
-      tag: widget.doc,
+      tag: doc,
       child: Container(
         width: 180,
         height: 180,
@@ -24,7 +28,7 @@ class _HeroImageWidgetState extends State<HeroImageWidget> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Image.asset(
-            widget.doc.image,
+            doc.image,
             fit: BoxFit.fill,
           ),
         ),

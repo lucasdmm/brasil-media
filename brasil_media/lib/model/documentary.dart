@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Documentary extends ChangeNotifier {
+  int id;
   String image;
   String title;
   String subtitle;
@@ -19,25 +20,27 @@ class Documentary extends ChangeNotifier {
   bool premium;
 
   Documentary({
+    this.id,
     this.image,
     this.title,
     this.subtitle,
     this.letterText,
-    this.numbAngry = 0,
-    this.numbCry = 0,
-    this.numbLike = 0,
-    this.numbLove = 0,
-    this.numbSurprise = 0,
-    this.isAngry = false,
-    this.isCry = false,
-    this.isLike = false,
-    this.isLove = false,
-    this.isSurprise = false,
-    this.patriota = false,
-    this.premium = false,
+    this.numbAngry,
+    this.numbCry,
+    this.numbLike,
+    this.numbLove,
+    this.numbSurprise,
+    this.isAngry,
+    this.isCry,
+    this.isLike,
+    this.isLove,
+    this.isSurprise,
+    this.patriota,
+    this.premium,
   });
   Documentary.fromJson(Map<dynamic, dynamic> json)
-      : image = json['image'],
+      : id = json['id'],
+        image = json['image'],
         title = json['title'],
         subtitle = json['subtitle'],
         letterText = json['letterText'],
@@ -55,11 +58,11 @@ class Documentary extends ChangeNotifier {
         premium = json['premium'];
   Map toJson() {
     return {
-      "patriota": this.patriota,
-      "premium": this.premium,
+      "id": this.id,
       "image": this.image,
       "title": this.title,
       "subtitle": this.subtitle,
+      "letterText": this.letterText,
       "numbLike": this.numbLike,
       "numbLove": this.numbLove,
       "numbSurprise": this.numbSurprise,
@@ -70,24 +73,26 @@ class Documentary extends ChangeNotifier {
       "isSurprise": this.isSurprise,
       "isAngry": this.isAngry,
       "isCry": this.isCry,
-      "letterText": this.letterText
+      "patriota": this.patriota,
+      "premium": this.premium
     };
   }
 
-  like() {
-    this.isLike = !this.isLike;
-    if (isLike) {
-      numbLike++;
-    }
+  like(bool val) {
+    this.isLike = val;
     notifyListeners();
+  }
+
+  adLike(int val) {
+    this.numbLike += val;
   }
 
   love() {
     this.isLove = !this.isLove;
     if (isLove) {
       numbLove++;
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   surprise() {

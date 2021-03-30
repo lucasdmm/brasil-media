@@ -14,7 +14,6 @@ class DocController extends ChangeNotifier {
     }).toList();
     notifyListeners();
   }
-  //  MockData().generate();
 
   addDoc(Documentary doc) {
     list.add(doc);

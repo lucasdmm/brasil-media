@@ -27,6 +27,7 @@
     ],
     "docs": [
         {
+            "id":1,
             "image": "assets/brasilparalelo.png",
             "title": "Brasil",
             "subtitle": "Quando irá se \"Ajeitar\"",
@@ -45,6 +46,7 @@
             "premium": false
         },
         {
+            "id":2,
             "image": "assets/terra.png",
             "title": "Terra",
             "subtitle": "Nossa Casa ou Apartamento",
@@ -63,6 +65,7 @@
             "premium": false
         },
         {
+            "id":3,
             "image": "assets/marte.png",
             "title": "Marte",
             "subtitle": "Destino Futuro",
@@ -81,6 +84,7 @@
             "premium": false
         },
         {
+            "id":4,
             "image": "assets/jupiter.png",
             "title": "Jupiter",
             "subtitle": "Giangte Gasoso ou Escudo protetor",
@@ -99,6 +103,7 @@
             "premium": true
         },
         {
+            "id":5,
             "image": "assets/saturno.png",
             "title": "Saturno",
             "subtitle": "O Senhor dos Anéis",
@@ -117,6 +122,7 @@
             "premium": false
         },
         {
+            "id":6,
             "image": "assets/urano.png",
             "title": "Urano",
             "subtitle": "Bolinha azul e planeta do Contra",
