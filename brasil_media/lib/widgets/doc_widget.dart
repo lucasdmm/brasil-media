@@ -16,7 +16,7 @@ class _DocWidgetState extends State<DocWidget> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-          color: Colors.green[300], borderRadius: BorderRadius.circular(20)),
+          color: Colors.black54, borderRadius: BorderRadius.circular(20)),
       height: 250,
       width: 200,
       child: Column(

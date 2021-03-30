@@ -1,3 +1,4 @@
+import 'package:brasil_media/pages/sign_in.dart';
 import 'package:flutter/material.dart';
 
 class BrPAppBar extends StatelessWidget {
@@ -20,7 +21,17 @@ class BrPAppBar extends StatelessWidget {
       ),
       actions: <Widget>[
         IconButton(icon: Icon(Icons.search), onPressed: () {}),
-        IconButton(icon: Icon(Icons.account_circle), onPressed: () {}),
+        IconButton(
+            icon: Hero(
+                tag: 'SignIn',
+                child: Icon(
+                  Icons.account_circle,
+                )),
+            tooltip: 'Logar',
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => SignIn()));
+            }),
       ],
       expandedHeight: 200,
       pinned: pinned,
