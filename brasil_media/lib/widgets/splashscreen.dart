@@ -14,18 +14,18 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     super.initState();
     anime();
+    Future.delayed(Duration(seconds: 2)).whenComplete(() =>
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => Home())));
   }
 
   anime() async {
-    Future.delayed(Duration(milliseconds: 1800))
-        .then((_) => setState(() => play = false))
-        .whenComplete(() => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => Home())));
+    Future.delayed(Duration(milliseconds: 800))
+        .then((_) => setState(() => play = false));
   }
 
   @override
   Widget build(BuildContext context) {
-    // anime();
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
@@ -45,8 +45,8 @@ class _SplashscreenState extends State<Splashscreen> {
               alignment: Alignment.center,
               child: AnimatedOpacity(
                 curve: Curves.decelerate,
-                duration: Duration(milliseconds: 1000),
-                opacity: play ? 1 : 0,
+                duration: Duration(milliseconds: 500),
+                opacity: play ? 0 : 1,
                 child: ClipOval(
                     child: Image.asset(
                   'assets/brasilparalelo.png',

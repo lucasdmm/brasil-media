@@ -1,22 +1,16 @@
-import 'package:brasil_media/helper/config.dart';
+import 'package:brasil_media/model/documentary.dart';
 import 'package:brasil_media/widgets/emotion_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DocWidget extends StatefulWidget {
-  const DocWidget({
-    Key key,
-  }) : super(key: key);
-
+  const DocWidget({Key key, this.doc}) : super(key: key);
+  final Documentary doc;
   @override
   _DocWidgetState createState() => _DocWidgetState();
 }
 
 class _DocWidgetState extends State<DocWidget> {
-  bool like = false;
-  bool love = false;
-  bool surprise = false;
-  int numberLikes;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,17 +23,20 @@ class _DocWidgetState extends State<DocWidget> {
         children: [
           Row(
             children: [
-              Container(
-                width: 180,
-                margin: EdgeInsets.all(10),
-                decoration: BoxDecoration(boxShadow: [
-                  BoxShadow(color: Colors.grey[300], offset: Offset(3, 2))
-                ], borderRadius: BorderRadius.circular(10)),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    Config.bp,
-                    fit: BoxFit.contain,
+              Hero(
+                tag: widget.doc,
+                child: Container(
+                  width: 180,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(color: Colors.grey[300], offset: Offset(3, 2))
+                  ], borderRadius: BorderRadius.circular(10)),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      widget.doc.image,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),
@@ -50,16 +47,16 @@ class _DocWidgetState extends State<DocWidget> {
                         width: 190,
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
-                            child: Text('Brasil Paralelo'))),
+                            child: Text(widget.doc.title))),
                     Container(
                         width: 190,
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
-                            child: Text('What is Lorem Ipsum ?'))),
+                            child: Text(widget.doc.subtitle))),
                     Container(
                       width: 190,
                       child: Text(
-                        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
+                        widget.doc.letterText,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 7,
                       ),
@@ -67,7 +64,7 @@ class _DocWidgetState extends State<DocWidget> {
                   ])),
             ],
           ),
-          EmotionBar()
+          EmotionBar(doc: widget.doc)
         ],
       ),
     );

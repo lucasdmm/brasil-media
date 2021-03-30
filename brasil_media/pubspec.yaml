@@ -13,6 +13,8 @@ dependencies:
   animated_text_kit: ^4.1.0
   google_fonts: ^2.0.0
   font_awesome_flutter: ^9.0.0
+  provider: ^5.0.0
+  drop_cap_text: ^1.0.7
   flutter:
     sdk: flutter
 
