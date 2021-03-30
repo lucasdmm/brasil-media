@@ -29,11 +29,14 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.only(top: 18.0),
                   child: GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                                MaterialPageRoute(builder: (_) => DocPage()))
-                            .then((value) => setState(() {}));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => DocPage(
+                                      doc: docs.list[index],
+                                    ))).then((value) => setState(() {}));
                       },
-                      child: DocWidget(index: index)),
+                      child: DocWidget(doc: docs.list[index])),
                 );
               },
               childCount: docs.list.length,

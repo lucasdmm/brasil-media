@@ -1,13 +1,12 @@
-import 'package:brasil_media/controller/doc_controller.dart';
 import 'package:brasil_media/helper/config.dart';
+import 'package:brasil_media/model/documentary.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
 class EmotionBar extends StatefulWidget {
-  EmotionBar({@required this.index});
-  final int index;
+  EmotionBar({@required this.doc});
+  final Documentary doc;
   @override
   _EmotionBarState createState() => _EmotionBarState();
 }
@@ -15,7 +14,6 @@ class EmotionBar extends StatefulWidget {
 class _EmotionBarState extends State<EmotionBar> {
   @override
   Widget build(BuildContext context) {
-    final doc = Provider.of<DocController>(context).list[widget.index];
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -24,9 +22,9 @@ class _EmotionBarState extends State<EmotionBar> {
           padding: EdgeInsets.all(4),
           width: 200,
           decoration: BoxDecoration(
-              color: Colors.blue[300],
+              color: Colors.white30,
               boxShadow: [
-                BoxShadow(color: Colors.black54, offset: Offset(2, 3))
+                BoxShadow(color: Colors.black38, offset: Offset(2, 3))
               ],
               borderRadius: BorderRadius.circular(10)),
           child: Row(
@@ -41,15 +39,18 @@ class _EmotionBarState extends State<EmotionBar> {
                   decoration: BoxDecoration(
                       color: Colors.blue[300],
                       borderRadius: BorderRadius.circular(10)),
-                  message: 'likes ${doc.numbLike}',
+                  message: 'Likes ${widget.doc.numbLike}',
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 2),
-                    child: Icon(doc.isLike
-                        ? CupertinoIcons.hand_thumbsup_fill
-                        : CupertinoIcons.hand_thumbsup),
+                    child: Icon(
+                      widget.doc.isLike
+                          ? CupertinoIcons.hand_thumbsup_fill
+                          : CupertinoIcons.hand_thumbsup,
+                      color: Colors.blue[900],
+                    ),
                   ),
                 ),
-                onTap: () => setState(() => doc.like()),
+                onTap: () => setState(() => widget.doc.like()),
               ),
               GestureDetector(
                 child: Tooltip(
@@ -59,15 +60,18 @@ class _EmotionBarState extends State<EmotionBar> {
                   decoration: BoxDecoration(
                       color: Colors.blue[300],
                       borderRadius: BorderRadius.circular(10)),
-                  message: 'Amei ${doc.numbLove}',
+                  message: 'Amei ${widget.doc.numbLove}',
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 2),
-                    child: Icon(doc.isLove
-                        ? CupertinoIcons.heart_solid
-                        : CupertinoIcons.heart),
+                    child: Icon(
+                      widget.doc.isLove
+                          ? CupertinoIcons.heart_solid
+                          : CupertinoIcons.heart,
+                      color: Colors.redAccent,
+                    ),
                   ),
                 ),
-                onTap: () => setState(() => doc.love()),
+                onTap: () => setState(() => widget.doc.love()),
               ),
               GestureDetector(
                 child: Tooltip(
@@ -77,14 +81,17 @@ class _EmotionBarState extends State<EmotionBar> {
                   decoration: BoxDecoration(
                       color: Colors.blue[300],
                       borderRadius: BorderRadius.circular(10)),
-                  message: 'Surpreso ${doc.numbSurprise}',
+                  message: 'Surpreso ${widget.doc.numbSurprise}',
                   child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 2),
-                      child: FaIcon(doc.isSurprise
-                          ? FontAwesomeIcons.solidSurprise
-                          : FontAwesomeIcons.surprise)),
+                      child: FaIcon(
+                        widget.doc.isSurprise
+                            ? FontAwesomeIcons.solidSurprise
+                            : FontAwesomeIcons.surprise,
+                        color: Colors.amber,
+                      )),
                 ),
-                onTap: () => setState(() => doc.surprise()),
+                onTap: () => setState(() => widget.doc.surprise()),
               ),
               GestureDetector(
                 child: Tooltip(
@@ -94,14 +101,16 @@ class _EmotionBarState extends State<EmotionBar> {
                   decoration: BoxDecoration(
                       color: Colors.blue[300],
                       borderRadius: BorderRadius.circular(10)),
-                  message: 'Raivoso ${doc.numbAngry}',
+                  message: 'Raivoso ${widget.doc.numbAngry}',
                   child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 2),
-                      child: FaIcon(doc.isAngry
-                          ? FontAwesomeIcons.solidAngry
-                          : FontAwesomeIcons.angry)),
+                      child: FaIcon(
+                          widget.doc.isAngry
+                              ? FontAwesomeIcons.solidAngry
+                              : FontAwesomeIcons.angry,
+                          color: Colors.red[600])),
                 ),
-                onTap: () => setState(() => doc.angry()),
+                onTap: () => setState(() => widget.doc.angry()),
               ),
               GestureDetector(
                 child: Tooltip(
@@ -111,14 +120,17 @@ class _EmotionBarState extends State<EmotionBar> {
                   decoration: BoxDecoration(
                       color: Colors.blue[300],
                       borderRadius: BorderRadius.circular(10)),
-                  message: 'Triste ${doc.numbCry}',
+                  message: 'Triste ${widget.doc.numbCry}',
                   child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 2),
-                      child: FaIcon(doc.isCry
-                          ? FontAwesomeIcons.solidSadCry
-                          : FontAwesomeIcons.sadCry)),
+                      child: FaIcon(
+                        widget.doc.isCry
+                            ? FontAwesomeIcons.solidSadCry
+                            : FontAwesomeIcons.sadCry,
+                        color: Colors.blue[900],
+                      )),
                 ),
-                onTap: () => setState(() => doc.cry()),
+                onTap: () => setState(() => widget.doc.cry()),
               ),
             ],
           ),

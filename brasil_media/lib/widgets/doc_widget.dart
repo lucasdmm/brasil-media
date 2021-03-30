@@ -1,12 +1,11 @@
-import 'package:brasil_media/controller/doc_controller.dart';
+import 'package:brasil_media/model/documentary.dart';
 import 'package:brasil_media/widgets/emotion_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class DocWidget extends StatefulWidget {
-  const DocWidget({Key key, this.index}) : super(key: key);
-  final int index;
+  const DocWidget({Key key, this.doc}) : super(key: key);
+  final Documentary doc;
   @override
   _DocWidgetState createState() => _DocWidgetState();
 }
@@ -14,7 +13,6 @@ class DocWidget extends StatefulWidget {
 class _DocWidgetState extends State<DocWidget> {
   @override
   Widget build(BuildContext context) {
-    final doc = Provider.of<DocController>(context).list[widget.index];
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
@@ -25,17 +23,20 @@ class _DocWidgetState extends State<DocWidget> {
         children: [
           Row(
             children: [
-              Container(
-                width: 180,
-                margin: EdgeInsets.all(10),
-                decoration: BoxDecoration(boxShadow: [
-                  BoxShadow(color: Colors.grey[300], offset: Offset(3, 2))
-                ], borderRadius: BorderRadius.circular(10)),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    doc.image,
-                    fit: BoxFit.contain,
+              Hero(
+                tag: widget.doc,
+                child: Container(
+                  width: 180,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(color: Colors.grey[300], offset: Offset(3, 2))
+                  ], borderRadius: BorderRadius.circular(10)),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      widget.doc.image,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),
@@ -45,15 +46,17 @@ class _DocWidgetState extends State<DocWidget> {
                     Container(
                         width: 190,
                         child: FittedBox(
-                            fit: BoxFit.fitWidth, child: Text(doc.title))),
+                            fit: BoxFit.fitWidth,
+                            child: Text(widget.doc.title))),
                     Container(
                         width: 190,
                         child: FittedBox(
-                            fit: BoxFit.fitWidth, child: Text(doc.subtitle))),
+                            fit: BoxFit.fitWidth,
+                            child: Text(widget.doc.subtitle))),
                     Container(
                       width: 190,
                       child: Text(
-                        doc.letterText,
+                        widget.doc.letterText,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 7,
                       ),
@@ -61,7 +64,7 @@ class _DocWidgetState extends State<DocWidget> {
                   ])),
             ],
           ),
-          EmotionBar(index: widget.index)
+          EmotionBar(doc: widget.doc)
         ],
       ),
     );

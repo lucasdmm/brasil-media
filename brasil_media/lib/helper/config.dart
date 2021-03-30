@@ -6,4 +6,13 @@ class Config {
   static const String bp = 'assets/brasilparalelo.png';
   static const TextStyle toolip =
       TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold);
+  static const TextStyle title = TextStyle(
+      color: Colors.black87, fontSize: 26, fontWeight: FontWeight.bold);
+  static const TextStyle subtitle = TextStyle(
+      color: Colors.black45, fontSize: 17, fontWeight: FontWeight.bold);
+  static const TextStyle letterText = TextStyle(
+    color: Colors.black54,
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+  );
 }
