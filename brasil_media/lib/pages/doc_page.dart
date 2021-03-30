@@ -2,12 +2,19 @@ import 'package:brasil_media/helper/config.dart';
 import 'package:brasil_media/model/documentary.dart';
 import 'package:brasil_media/widgets/br_p_appbar.dart';
 import 'package:brasil_media/widgets/emotion_bar.dart';
+import 'package:brasil_media/widgets/hero_image_widget.dart';
 import 'package:drop_cap_text/drop_cap_text.dart';
 import 'package:flutter/material.dart';
 
-class DocPage extends StatelessWidget {
+class DocPage extends StatefulWidget {
   final Documentary doc;
   DocPage({@required this.doc});
+
+  @override
+  _DocPageState createState() => _DocPageState();
+}
+
+class _DocPageState extends State<DocPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,45 +35,30 @@ class DocPage extends StatelessWidget {
                         Padding(
                             padding: const EdgeInsets.only(top: 30),
                             child: Text(
-                              doc.title,
+                              widget.doc.title,
                               overflow: TextOverflow.clip,
                               style: Config.title,
                             )),
                         Padding(
                             padding: const EdgeInsets.only(top: 3, bottom: 10),
                             child: Text(
-                              doc.subtitle,
+                              widget.doc.subtitle,
                               overflow: TextOverflow.clip,
                               style: Config.subtitle,
                             )),
                         DropCapText(
-                          doc.letterText,
+                          widget.doc.letterText,
                           style: Config.letterText,
                           textAlign: TextAlign.justify,
                           dropCap: DropCap(
                             height: 180,
                             width: 180,
-                            child: Hero(
-                              tag: doc,
-                              child: Container(
-                                margin: EdgeInsets.all(10),
-                                decoration: BoxDecoration(boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey[300],
-                                      offset: Offset(3, 2))
-                                ], borderRadius: BorderRadius.circular(10)),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    doc.image,
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                              ),
+                            child: HeroImageWidget(
+                              doc: widget.doc,
                             ),
                           ),
                         ),
-                        EmotionBar(doc: doc),
+                        EmotionBar(doc: widget.doc),
                         SizedBox(height: 100)
                       ],
                     ),

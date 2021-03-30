@@ -15,7 +15,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final docs = Provider.of<DocController>(context);
-
+    docs.generateMockList(context);
+    var list = docs.list
+        .where((doc) => doc.patriota == false && doc.premium == false)
+        .toList();
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (context, condition) {
@@ -33,13 +36,13 @@ class _HomeState extends State<Home> {
                             context,
                             MaterialPageRoute(
                                 builder: (_) => DocPage(
-                                      doc: docs.list[index],
+                                      doc: list[index],
                                     ))).then((value) => setState(() {}));
                       },
-                      child: DocWidget(doc: docs.list[index])),
+                      child: DocWidget(doc: list[index])),
                 );
               },
-              childCount: docs.list.length,
+              childCount: list.length,
             ),
           ),
         ]),

@@ -1,5 +1,7 @@
+import 'package:brasil_media/helper/config.dart';
 import 'package:brasil_media/model/documentary.dart';
 import 'package:brasil_media/widgets/emotion_bar.dart';
+import 'package:brasil_media/widgets/hero_image_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,40 +25,27 @@ class _DocWidgetState extends State<DocWidget> {
         children: [
           Row(
             children: [
-              Hero(
-                tag: widget.doc,
-                child: Container(
-                  width: 180,
-                  margin: EdgeInsets.all(10),
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(color: Colors.grey[300], offset: Offset(3, 2))
-                  ], borderRadius: BorderRadius.circular(10)),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      widget.doc.image,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
+              HeroImageWidget(doc: widget.doc),
               Padding(
                   padding: const EdgeInsets.only(top: 10, right: 10),
                   child: Column(children: [
                     Container(
                         width: 190,
-                        child: FittedBox(
-                            fit: BoxFit.fitWidth,
-                            child: Text(widget.doc.title))),
+                        child: Text(
+                          widget.doc.title,
+                          style: Config.title,
+                        )),
                     Container(
                         width: 190,
-                        child: FittedBox(
-                            fit: BoxFit.fitWidth,
-                            child: Text(widget.doc.subtitle))),
+                        child: Text(
+                          widget.doc.subtitle,
+                          style: Config.subtitle,
+                        )),
                     Container(
                       width: 190,
                       child: Text(
                         widget.doc.letterText,
+                        style: Config.letterText,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 7,
                       ),

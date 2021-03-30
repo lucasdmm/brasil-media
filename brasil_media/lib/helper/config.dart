@@ -5,6 +5,7 @@ class Config {
   Color primaryColor = Colors.black;
   static const String bp = 'assets/brasilparalelo.png';
   static const String universe = 'assets/universe_wall.jpeg';
+  static const String dataBase = 'lib/data/data.json';
   static const TextStyle toolip =
       TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold);
   static const TextStyle title = TextStyle(

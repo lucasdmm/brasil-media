@@ -46,6 +46,13 @@ flutter:
     - assets/milena.png
     - assets/guilherme.png
     - assets/lucas.png
+    - assets/lucas.png
+    - assets/terra.png
+    - assets/marte.png
+    - assets/jupiter.png
+    - assets/saturno.png
+    - assets/urano.png
+    - lib/data/data.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

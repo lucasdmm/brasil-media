@@ -36,7 +36,7 @@ class Documentary extends ChangeNotifier {
     this.patriota = false,
     this.premium = false,
   });
-  Documentary.fromJson(Map<String, dynamic> json)
+  Documentary.fromJson(Map<dynamic, dynamic> json)
       : image = json['image'],
         title = json['title'],
         subtitle = json['subtitle'],
