@@ -1,6 +1,7 @@
 import 'package:brasil_media/helper/config.dart';
 import 'package:brasil_media/model/documentary.dart';
 import 'package:brasil_media/widgets/br_p_appbar.dart';
+import 'package:brasil_media/widgets/emotion_bar.dart';
 import 'package:drop_cap_text/drop_cap_text.dart';
 import 'package:flutter/material.dart';
 
@@ -65,6 +66,7 @@ class DocPage extends StatelessWidget {
                             ),
                           ),
                         ),
+                        EmotionBar(doc: doc),
                         SizedBox(height: 100)
                       ],
                     ),
