@@ -1,6 +1,4 @@
 import 'package:brasil_media/helper/config.dart';
-import 'package:brasil_media/widgets/profile_widget.dart';
-import 'package:brasil_media/widgets/sign_in_form_widget.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -9,7 +7,6 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  bool plus = false;
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -29,7 +26,34 @@ class _SignInState extends State<SignIn> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [ProfileWidget(), SignInFormWidget()],
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.all(30),
+              child: Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                color: Colors.white24,
+                margin: EdgeInsets.all(20),
+                child: Container(
+                  height: 200,
+                  width: MediaQuery.of(context).size.width / 2,
+                  margin: EdgeInsets.all(5),
+                  alignment: Alignment.center,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black87,
+                    radius: 80,
+                    child: Hero(
+                      tag: 'SignIn',
+                      child: Icon(Icons.account_circle, size: 150),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       )
     ]);
