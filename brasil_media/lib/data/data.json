@@ -1,18 +1,10 @@
 {
     "users": [
         {
-            "name": null,
-            "email": null,
-            "password": null,
-            "profileImage": null,
-            "patriota": false,
-            "premium": false
-        },
-        {
             "name": "Milena Melo",
             "email": "milena.melo@mock.com",
             "password": "premium",
-            "profileImage": null,
+            "profileImage": "assets/milena.png",
             "patriota": true,
             "premium": true
         },
@@ -20,9 +12,17 @@
             "name": "Guilherme Rosceli",
             "email": "guilhermer@mock.com",
             "password": "patriota",
-            "profileImage": null,
+            "profileImage": "assets/guilherme.png",
             "patriota": true,
             "premium": false
+        },
+        {
+            "name": "Lucas Diogo Mesquita de Melo",
+            "email": "lucasdmm.23@gmail.com",
+            "password": "premium",
+            "profileImage": "assets/lucas.png",
+            "patriota": true,
+            "premium": true
         }
     ],
     "docs": [

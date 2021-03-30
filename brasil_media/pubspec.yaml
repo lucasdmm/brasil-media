@@ -42,6 +42,10 @@ flutter:
   assets:
     - assets/brasilparalelo.png
     - assets/universe.jpeg
+    - assets/universe_wall.jpeg
+    - assets/milena.png
+    - assets/guilherme.png
+    - assets/lucas.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
