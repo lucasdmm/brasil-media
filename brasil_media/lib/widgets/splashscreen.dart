@@ -58,11 +58,11 @@ class _SplashscreenState extends State<Splashscreen> {
               style: GoogleFonts.armata(
                   decoration: TextDecoration.none,
                   color: Colors.white,
-                  fontSize: 40,
+                  fontSize: 50,
                   fontWeight: FontWeight.bold),
               child: AnimatedTextKit(
                   isRepeatingAnimation: false,
-                  animatedTexts: [TyperAnimatedText('Brasil Paralelo')]),
+                  animatedTexts: [TyperAnimatedText('Star Wars')]),
             )
           ],
         ),

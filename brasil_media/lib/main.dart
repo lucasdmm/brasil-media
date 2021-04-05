@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Midia Brasil',
+        title: 'Star Wars data by Me',
         theme: ThemeData(
             primaryColor: Colors.black,
             tooltipTheme: TooltipThemeData(
