@@ -21,7 +21,6 @@ class _DocWidgetState extends State<DocWidget> {
         .list
         .firstWhere((doc) => doc.id == widget.id);
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
           color: Colors.black54, borderRadius: BorderRadius.circular(20)),
       height: 270,
